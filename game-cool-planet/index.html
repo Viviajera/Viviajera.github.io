@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cool Planet Game</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="game-intro">
+    <img src="images/logo.png" alt="" class="logo-img">
+    <div class="scoring-arrows">
+      <img src="images/bonus-malus.png" alt="" class="points-img">
+      <img src="images/arrows.png" alt="" class="arrows-img">
+    </div>
+    <p>Your goal ? : <br/> have more CO2 bonus than malus in a journey (8h-18h) <br/>Good luck!</p>
+    <button id="start-button">Start</button>
+  </div>
+  <div id="game-board">
+  <canvas class= "game-road" width="1600" height="1600"></canvas>
+  </div>
+  <script src="consomer.js"></script>
+  <script src="bonus-malus.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
