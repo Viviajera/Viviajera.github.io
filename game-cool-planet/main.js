@@ -5,6 +5,7 @@ let malus = 0;
 let finished;
 var time = 8;
 
+
 const obstacleTypes = [
   {
     image: "./images/airplane.png",
@@ -50,6 +51,11 @@ const obstacleTypes = [
     image: "./images/recycling.png",
     isGood: true,
     width: 200
+  },
+  {
+    image: "./images/light-on.png",
+    isGood: false,
+    width: 200
   }
 ];
 
@@ -77,10 +83,20 @@ clockImage.onload = function () {
 };
 clockImage.src = "./images/time.png";
 
-//Game canvas
+//GAME CANVAS
 const ctx = document.querySelector("canvas").getContext("2d");
 const W = ctx.canvas.width;
 const H = ctx.canvas.height;
+
+//audio
+
+var winSound = new Audio('./audio/win.mp3');
+winSound.volume = 0.2
+winSound.play()
+
+var loseSound = new Audio('./audio/cough.mp3');
+loseSound.volume = 0.2
+loseSound.play()
 
 function draw() {
   //obstacles raining
@@ -106,57 +122,51 @@ function draw() {
 
   //counting CO2 Bonus / Malus
 
-  //Bonus
+  //BONUS DRAW
   ctx.fillStyle = "rgb(87, 205, 271)";
   ctx.fillRect(100, 1400, 400, 200);
   ctx.fillStyle = "black";
   ctx.font = "80px Arial";
   ctx.fillText(bonus + " CO2 Bonus", 200, 1550, 250);
-  ctx.strokeText(bonus + " CO2 Bonus", 200, 1550, 250);
+ 
 
   if (coolPlanet) {
     ctx.drawImage(coolPlanetImage, 0, 1300, 200, 200);
   }
 
-  //Malus
+  //MALUS DRAW
   ctx.fillStyle = "rgb(255, 137, 30)";
   ctx.fillRect(1150, 1400, 400, 200);
   ctx.fillStyle = "black";
   ctx.font = "80px Arial";
   ctx.fillText(malus + " CO2 Malus", 1200, 1550, 250);
-  ctx.strokeText(malus + " CO2 Malus", 1200, 1550, 250);
+ 
 
   if (hotPlanet) {
     ctx.drawImage(hotPlanetImage, 1400, 1300, 200, 200);
   }
   
 
-  //Time
+  //TIME
   time = 8 + Math.floor(frames / 200);
   ctx.fillStyle = "rgb(87, 205, 271)";
   ctx.fillRect(0, 0, 500, 200);
   ctx.fillStyle = "black";
   ctx.font = "80px Arial";
-  ctx.fillText(" Time: " + time + "h", 100, 150, 300);
-  ctx.strokeText(" Time: " + time + "h", 100, 150, 300);
-  
-  //pbm ----!
-
-    
+  ctx.fillText(" Time: " + time + "h", 120, 150, 300);    
 
   if (clock) {
-    ctx.drawImage(clockImage,0, 200, 200, 200);
+    ctx.drawImage(clockImage,0, 0, 150, 150);
   }
     
-
-  // consomer drawing
+  // CONSOMER DRAWING
   consomer.draw();
   obstacles.forEach(function(obstacle) {
     obstacle.draw();
     obstacle.y += 10;
   });
 
-  // crash and points bonus/ malus
+  // CRASH AND POINTS BONUS/MALUS
   obstacles.forEach(function(obstacle, index) {
     if (obstacle.crashwith(consomer)) {
       if (obstacle.isGood) {
@@ -168,48 +178,89 @@ function draw() {
     }
   });
 
-  if (time >= 10) {
+// YOU WIN / YOU LOSE
+  if (time >= 18) {
     finished = true;
     ctx.clearRect(0, 0, 1600, 1600);
+    
 
     if (bonus >= malus) {
       ctx.fillStyle = "rgb(87, 205, 271)";
-      ctx.fillRect(550, 100, 650, 900);
-      ctx.fillStyle = "white";
-      ctx.font = "80px Arial";
-      ctx.fillText("Final score : ", 650, 700, 600);
-      ctx.fillText(bonus + " CO2 Bonus " + malus + " CO2 Malus", 600, 800, 500);
-      ctx.fillText("You win!", 700, 900, 600);
-      //pbm----!
+      ctx.fillRect(550, 200, 650, 200);
+      ctx.fillStyle = "black";
+      ctx.font = "200px Comic Sans MS";
+      ctx.fillText(bonus + " CO2", 650, 370, 500);
+      
+
+      if (coolPlanet) {
+        ctx.drawImage(coolPlanetImage, 800, 0, 200, 200);
+      }
+
+      ctx.fillStyle = "lightslategrey";
+      ctx.fillRect(600, 800, 600, 200);
+      ctx.fillStyle = "yellow";
+      ctx.font = "bold 150px Comic Sans MS";
+      ctx.fillText("You win ! ", 700, 950, 500);
+      
+    
       var winImage = new Image();
       winImage.onload = function() {
         win = true;
-        ctx.drawImage(winImage, 650, 200, 200, 200);
+        ctx.drawImage(winImage, 750, 1100, 300, 450);
       };
       winImage.src = "./images/win.png";
       
+      ctx.fillStyle = "rgb(255, 137, 30)";
+      ctx.fillRect(1150, 1400, 400, 200);
+      ctx.fillStyle = "black";
+      ctx.font = "100px Comic Sans MS";
+      ctx.fillText(malus + " CO2 Malus", 1200, 1550, 250);
+
+      if (hotPlanet) {
+        ctx.drawImage(hotPlanetImage, 1400, 1300, 200, 200);
+      }
+      winSound.play()
 
     } else {
       ctx.fillStyle = "rgb(255, 137, 30)";
-      ctx.fillRect(550, 100, 650, 900);
+      ctx.fillRect(550, 200, 650, 200);
       ctx.fillStyle = "black";
-      ctx.font = "80px Arial";
-      ctx.fillText("Final score : ", 650, 700, 600);
-      ctx.fillText(bonus + " CO2 Bonus " + malus + " CO2 Malus", 650, 800, 500);
-      ctx.fillText("You lose, try again!", 650, 900, 500);
-      //pbm----!
+      ctx.font = "200px Comic Sans MS";
+      ctx.fillText(malus + " CO2 Malus", 650, 370, 500);
+
+      if (hotPlanet) {
+        ctx.drawImage(hotPlanetImage, 800, 0, 200, 200);
+      }
+      ctx.fillStyle = "lightslategrey";
+      ctx.fillRect(400, 800, 1000, 200);
+      ctx.fillStyle = "rgb(255, 137, 30)";
+      ctx.font = "bold 100px Comic Sans MS";
+      ctx.fillText("You lose, try again!", 450, 950, 900);
+  
+      
       var loseImage = new Image();
       loseImage.onload = function() {
         lose = true;
-        ctx.drawImage(loseImage, 650, 200, 200, 200);
+        ctx.drawImage(loseImage, 750, 1100, 300, 400);
       };
       loseImage.src = "./images/lose.png";
+
+      ctx.fillStyle = "rgb(87, 205, 271)";
+      ctx.fillRect(100, 1400, 400, 200);
+      ctx.fillStyle = "black";
+      ctx.font = "100px Comic Sans MS";
+      ctx.fillText(bonus + " CO2 Bonus", 200, 1550, 250);
+
+      if (coolPlanet) {
+        ctx.drawImage(coolPlanetImage, 0, 1300, 200, 200);
+      }
+      loseSound.play()
       
     }
   } 
 }
 
-// moving
+// MOVING
 
 document.onkeydown = function(e) {
   switch (e.which) {
@@ -231,7 +282,7 @@ document.onkeyup = function(e) {
   consomer.speedY = 0;
 };
 
-//frames
+//FRAMES
 let raf;
 let frames = 0;
 function animLoop() {
@@ -250,9 +301,11 @@ function reset() {
   obstacles = [];
   bonus = 0;
   malus = 0;
+  bonusSound = false;
+  MalusSound = false;
 }
 
-// start game
+// START GAME
 function startGame() {
   if (raf) {
     cancelAnimationFrame(raf);
