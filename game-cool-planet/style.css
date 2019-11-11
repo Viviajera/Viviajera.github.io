@@ -20,7 +20,7 @@ body >div {flex:1;}
   width: 300px;
 }
 .points-img {
-  padding-top:20px;
+  padding-top:10px;
   width: 300px
 }
 .fullGame{
@@ -28,16 +28,12 @@ body >div {flex:1;}
 }
 
 .arrows-img {
-  padding-top:10px; 
+  padding-top:0px; 
   width: 200px;
 }
 .p{
   margin-block-start: 0; 
 }
-/* .coolplanet-img{
-  padding:0; 
-  margin-top:90%;
-} */
 
 body button {
   font-size: 30px;
@@ -46,6 +42,7 @@ body button {
   padding: 10px 10px;
   border: 0;
   border-radius: 5px;
+  margin-top: 20px;
   margin-bottom: 20px;
   
 }
