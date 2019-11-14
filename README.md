@@ -26,7 +26,10 @@ Enjoy !
 ## Technical Issues
 
 ### HTML and CSS
-
-
-
+index.html --> Left side of the screen --> canvas size, scoring and game play<br/>
+style.css --> Define style in both sides of the screen<br/>
 ### JS 
+main.js --> all functions (draw canvas, crash, scoring, obstacles raining, time, keys interaction, start game, game over), audio, variables.<br/>
+consomer.js --> Player class (speed, img, moving)<br/>
+bonus_malus.js --> Obstacles class (rain, crash)<br/>
+
