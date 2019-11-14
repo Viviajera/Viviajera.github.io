@@ -1,7 +1,7 @@
 function random(from, to) {
   return Math.floor(from + Math.random()*(to - from));
 }
-
+//-----------------------------------------------------bonus/malus raining
 class Obstacle{
   constructor(x, src, w, isGood) {
     const img = document.createElement('img');
@@ -27,7 +27,7 @@ class Obstacle{
     
     ctx.drawImage(this.img, this.x,this.y, this.w, this.h);
   }
- 
+ //---------------------------------------------------crash player with bonus/malus
   crashwith(consomer) {
     var crashed= (
       (consomer.x+this.w >= this.x && consomer.x <= this.x+this.w) 

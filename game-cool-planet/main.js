@@ -3,7 +3,7 @@ let obstacles = [];
 let bonus = 0;
 let malus = 0;
 let finished;
-var time = 8;
+let time = 8;
 
 
 const obstacleTypes = [
@@ -58,8 +58,6 @@ const obstacleTypes = [
     width: 200
   }
 ];
-
-
 
 var coolPlanet;
 var coolPlanetImage = new Image();
@@ -184,7 +182,6 @@ function draw() {
     finished = true;
     ctx.clearRect(0, 0, 1600, 1600);
     
-
     if (bonus >= malus) { //YOU WIN
       //WIN IMG
       var winImage = new Image();

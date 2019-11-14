@@ -31,9 +31,6 @@ body >div {flex:1;}
   padding-top:0px; 
   width: 200px;
 }
-.p{
-  margin-block-start: 0; 
-}
 
 body button {
   font-size: 30px;

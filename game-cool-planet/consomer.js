@@ -1,3 +1,4 @@
+// -------------------------------------------------------------player
 class Consomer {
       constructor (){
     const img = document.createElement('img');
@@ -13,12 +14,12 @@ class Consomer {
         this.speedY = 0;
     }
     img.src = "images/player.png";
-  
-    }
-    newPos() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-    }
+  }
+  // -----------------------------------------------------------player speed moving
+  newPos() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+  }
 
   draw() {
     if (!this.img) return; 
