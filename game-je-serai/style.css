@@ -1,0 +1,109 @@
+body {
+  margin:0;
+  padding:0; 
+  box-sizing: border-box; 
+  font-size: 20px;
+  font-family: "Comic Sans MS";
+  justify-content: space-around;
+
+}
+
+/*body {display:flex; min-height:50vh;}
+body >div {flex:1;}*/
+
+#game-board {
+  padding: 0px;
+  border:black solid 1px; 
+  color:black; 
+  text-align: right; 
+}
+#game-board {position:relative;}
+#game-board canvas {
+  position:absolute; left:0;top:0;
+  width:100%; height:100%;
+  object-fit:contain;
+  background-image: url(./images/lycee.png); 
+  background-size: 720px; 
+  background-repeat: no-repeat; 
+
+}
+
+.game-intro {
+  display:flex; flex-direction: row;
+  justify-content:space-around; 
+  background-color:rgba(215, 201, 48, 0.982);
+  
+}
+
+.history-cercle {
+  display:flex; 
+  justify-content: space-around;
+  font-size:20px; 
+  text-align: center; 
+  margin-left:50px;
+}
+.logo-img{
+  width: 100px;
+  height: 100px;
+}
+.scoring-arrows{
+  display: block;
+  justify-content: center;
+  padding-top: 0;
+}
+.points-img {
+  padding-top:10px;
+  width: 300px;
+  height: 300px;
+}
+.fullGame{
+  display: flex;
+}
+
+.arrows-img {
+  padding-top:0px; 
+  width: 200px;
+}
+
+body button {
+  font-size: 30px;
+  background-color: rgb(46, 221, 123);
+  color: rgb(0, 0, 0);
+  padding: 10px 10px;
+  border: 0;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 100px;
+  
+}
+#game-board {
+  padding: 0px;
+  border:black solid 1px; 
+  color:black; 
+  text-align: right; 
+}
+#game-board {position:relative;}
+#game-board canvas {
+  position:relative; left:0;top:0;
+  width:100%; height:100%;
+  object-fit:contain;
+  background-image: url(./images/lycee.png); 
+  background-size:100%; 
+  background-repeat: no-repeat; 
+
+}
+.img-logos{
+  width: 200px;
+}
+footer{
+  color:grey;
+  display:flex; 
+  font-size:15px; 
+  justify-content: space-around;
+}
+footer a{
+  text-align: end;
+  padding-top: 50px;
+  padding-right:0px; 
+}
