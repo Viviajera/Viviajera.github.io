@@ -188,7 +188,7 @@ function draw() {
       winImage.onload = function() {
         win = true;
         ctx.clearRect(0, 0, 1600, 1600);
-        ctx.drawImage(winImage, 0, 0, 1000, 800);
+        ctx.drawImage(winImage, 300, 0, 1000, 800);
       };
       winImage.src = "./images/win.png";
       // BONUS SCORE
@@ -308,4 +308,3 @@ function startGame() {
 document.getElementById("start-button").onclick = function() {
   startGame();
 };
-
