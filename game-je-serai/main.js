@@ -188,7 +188,7 @@ function draw() {
       winImage.onload = function() {
         win = true;
         ctx.clearRect(0, 0, 1600, 1600);
-        ctx.drawImage(winImage, 0, 0, 1800, 1300);
+        ctx.drawImage(winImage, 300, 0, 1000, 800);
       };
       winImage.src = "./images/win.png";
       // BONUS SCORE
@@ -220,7 +220,7 @@ function draw() {
       loseImage.onload = function() {
         lose = true;
         ctx.clearRect(0, 0, 1600, 1600);
-        ctx.drawImage(loseImage, 0, 0, 1800, 1300);
+        ctx.drawImage(loseImage, 300, 0, 1000, 800);
       };
       loseImage.src = "./images/lose.png";
 
