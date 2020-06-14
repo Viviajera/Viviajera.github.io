@@ -187,6 +187,7 @@ function draw() {
       var winImage = new Image();
       winImage.onload = function() {
         win = true;
+        ctx.clearRect(0, 0, 1600, 1600);
         ctx.drawImage(winImage, 0, 0, 1800, 1300);
       };
       winImage.src = "./images/win.png";
@@ -218,6 +219,7 @@ function draw() {
       var loseImage = new Image();
       loseImage.onload = function() {
         lose = true;
+        ctx.clearRect(0, 0, 1600, 1600);
         ctx.drawImage(loseImage, 0, 0, 1800, 1300);
       };
       loseImage.src = "./images/lose.png";
